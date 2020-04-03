@@ -11,12 +11,8 @@ pipeline {
         
         stage('DeployToStaging') {
             when { branch 'master' }
-            steps {} 
-         }
-        
-        stage('DeployToProd') {
             steps {
-                            withCredentials([sshUserPrivateKey(credentialsId: 'jdeploy', keyFileVariable: 'deploy')]) {
+                                        withCredentials([sshUserPrivateKey(credentialsId: 'jdeploy', keyFileVariable: 'deploy')]) {
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
@@ -39,11 +35,10 @@ pipeline {
                         ]
                     )
                 }
-            
-            }
+            } 
+         }
         
-        }
-        
+       
         
     }
 }
