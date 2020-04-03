@@ -12,7 +12,7 @@ pipeline {
         stage('DeployToStaging') {
             when { branch 'master' }
             steps {
-                                        withCredentials([sshUserPrivateKey(credentialsId: 'jdeploy', keyFileVariable: 'deploy')]) {
+                                        withCredentials([sshUserPrivateKey(credentialsId: 'deploy', keyFileVariable: 'deploy')]) {
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
