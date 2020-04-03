@@ -16,7 +16,7 @@ pipeline {
         
         stage('DeployToProd') {
             steps {
-                            withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
+                            withCredentials([sshUserPrivateKey(credentialsId: 'jdeploy', keyFileVariable: 'deploy')]) {
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
